@@ -2,7 +2,7 @@
 
 **Actorob** is a research repository accompanying the IEEE RA-L paper:
 
-**“Task-Aware Actuator Parameter Allocation for Multibody Robots”**
+**[Task-Aware Actuator Parameter Allocation for Multibody Robots](https://ieeexplore.ieee.org/document/11433790)**
 
 ---
 

@@ -50,4 +50,13 @@ The implementation will be made publicly available after refactoring and documen
 
 If you use this work in academic research, please cite:
 
-(BibTeX will be updated after final publication details are available.)
+```
+@article{task-aware_actuator2026,
+  title = {Task-{Aware} {Actuator} {Parameter} {Allocation} for {Multibody} {Robots}},
+  doi = {10.1109/LRA.2026.3674006},
+  journal = {IEEE Robotics and Automation Letters},
+  author = {Nasonov, Kirill and Kakanov, Mikhail and Skvortsova, Valeria and Zaliaev, Eduard and Borisov, Ivan},
+  year = {2026},
+  pages = {1--6},
+}
+```

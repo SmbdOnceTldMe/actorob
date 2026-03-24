@@ -1,4 +1,5 @@
 # Actorob
+[![Project Page](https://img.shields.io/badge/project-page-2ea44f?logo=github)](https://mkakanov.github.io/actorob/)
 
 **Actorob** is a research repository accompanying the IEEE RA-L paper:
 

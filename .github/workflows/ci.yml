@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-release-matrix:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-14
+            label: osx-arm64
+          - os: ubuntu-latest
+            label: linux-64
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.9.3
+        with:
+          manifest-path: pyproject.toml
+          environments: >-
+            default
+            dev
+          locked: true
+          cache: true
+
+      - name: Run test suite
+        run: pixi run pytest -q
+
+      - name: Run pre-commit checks
+        run: pixi run -e dev pre-commit-all
+
+      - name: Build source and wheel distributions
+        run: pixi run -e dev python -m build --sdist --wheel
+
+      - name: Check built distribution metadata
+        run: pixi run -e dev check-dist
+
+      - name: Verify wheel installation smoke test
+        run: pixi run -e dev verify-wheel-install
+
+      - name: Run inverse-design smoke test
+        run: >
+          pixi run python examples/cma_es_invdes.py
+          --config configs/dog_aligator_minimal.toml
+          --tasks walk
+          --max-iterations 1
+          --population 1
+          --workers 1
+          --skip-dashboard
+          --no-progress
+          --run-output "${RUNNER_TEMP}/actorob_smoke.pkl"

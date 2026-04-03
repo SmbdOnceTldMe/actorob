@@ -1,0 +1,32 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# macOS metadata
+.DS_Store
+
+# VsCode settings
+.vscode
+
+# Log files
+*.log
+/log
+*MUJOCO_LOG.TXT
+logs/
+outputs/
+*.html
+*.pkl
+
+# Cache files
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+*.pyc
+build/
+dist/
+
+# Example ignores
+*_actorob.xml
+*_custom.xml

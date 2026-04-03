@@ -1,0 +1,96 @@
+[base]
+robot = "dog"
+mjcf_path = "../robots/dog/dog.xml"
+align_feet_to_ground = true
+ground_z = 0.0
+init_pose = [
+    0, 0, 0, 0, 0, 0, 1,
+    0, 0.8, -1.6,
+    0, 0.8, -1.6,
+    0, 0.8, -1.6,
+    0, 0.8, -1.6
+]
+
+[trajectory]
+dt = 0.02
+use_control_bounds = true
+use_kinematic_constraints = true
+use_friction_cones = true
+enforce_mechanical_characteristic = true
+
+[solver]
+tol = 1e-1
+mu_init = 1e-4
+max_iter = 300
+verbose = "QUIET"
+rollout_type = "ROLLOUT_LINEAR"
+sa_strategy = "SA_LINESEARCH_ARMIJO"
+linear_solver_choice = "LQ_SOLVER_SERIAL"
+filter_beta = 1e-5
+force_initial_condition = true
+reg_min = 1e-6
+num_threads = 1
+
+[contact]
+contact_frames_3d = ["front_left_foot", "front_right_foot", "rear_left_foot", "rear_right_foot"]
+contact_mu = 0.8
+prox_accuracy = 1e-9
+prox_mu = 1e-9
+prox_max_iter = 10
+
+[tasks.walk]
+target_dx = 0.24
+target_dy = 0.0
+target_dz = 0.0
+touchdown_dx = 0.08
+touchdown_dy = 0.0
+touchdown_dz = 0.0
+state_weight = 2.0
+control_weight = 1e-3
+terminal_weight = 40.0
+base_position_weight_scale = 80.0
+base_orientation_weight_scale = 10.0
+base_linear_velocity_weight_scale = 20.0
+base_angular_velocity_weight_scale = 5.0
+
+[tasks.walk.trajectory_params]
+n_steps = 3
+step_time = 0.2
+ds_time = 0.05
+dx = 0.4
+dy = 0.0
+swing_apex = 0.1
+
+[tasks.upstairs]
+state_weight = 2.0
+control_weight = 1e-3
+terminal_weight = 40.0
+base_position_weight_scale = 100.0
+base_orientation_weight_scale = 10.0
+base_linear_velocity_weight_scale = 20.0
+base_angular_velocity_weight_scale = 5.0
+
+[tasks.upstairs.trajectory_params]
+n_steps = 8
+stair_start = 2
+stair_end = 6
+stair_h = 0.12
+step_time = 0.5
+ds_time = 0.15
+dx = 0.6
+swing_apex = 0.15
+
+[tasks.jump_forward]
+state_weight = 1e-3
+control_weight = 1e-4
+terminal_weight = 10000.0
+base_position_weight_scale = 0.0
+base_orientation_weight_scale = 0.0
+base_linear_velocity_weight_scale = 1.0
+base_angular_velocity_weight_scale = 1.0
+
+[tasks.jump_forward.trajectory_params]
+t_st = 100
+t_ft = 20
+jump_h = 0.2
+jump_l = 0.6

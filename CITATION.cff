@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+title: ACTOROB
+message: "If you use this repository, please cite the software entry and the associated scientific article."
+type: software
+version: 0.1.0
+license: MIT
+abstract: "ACTOROB is a research codebase for task-aware actuator co-design and trajectory optimization in robot examples."
+url: "https://mkakanov.github.io/actorob/"
+repository-code: "https://github.com/SmbdOnceTldMe/actorob_dev"
+authors:
+  - family-names: Nasonov
+    given-names: Kirill
+    email: nasonov_kv@mail.ru
+  - family-names: Kakanov
+    given-names: Mikhail
+    email: mikhail.kakanov@gmail.com
+  - family-names: Skvortsova
+    given-names: Valeria
+    email: valeriaskvo@gmail.com
+keywords:
+  - robotics
+  - trajectory optimization
+  - actuator co-design
+  - inverse design
+preferred-citation:
+  type: article
+  title: "Task-Aware Actuator Parameter Allocation for Multibody Robots"
+  journal: "IEEE Robotics and Automation Letters"
+  year: 2026
+  doi: "10.1109/LRA.2026.3674006"
+  start: 1
+  end: 6
+  authors:
+    - family-names: Nasonov
+      given-names: Kirill
+    - family-names: Kakanov
+      given-names: Mikhail
+    - family-names: Skvortsova
+      given-names: Valeria
+    - family-names: Zaliaev
+      given-names: Eduard
+    - family-names: Borisov
+      given-names: Ivan

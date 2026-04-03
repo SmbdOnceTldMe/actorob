@@ -1,0 +1,111 @@
+[project]
+name = "actorob"
+version = "0.1.0"
+description = "Task-aware actuator co-design and trajectory optimization tools for robotics research artifacts."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    {name = "Nasonov Kirill", email = "nasonov_kv@mail.ru"},
+    {name = "Kakanov Mikhail", email = "mikhail.kakanov@gmail.com"},
+    {name = "Skvortsova Valeria", email = "valeriaskvo@gmail.ru"},
+]
+requires-python = ">=3.11"
+keywords = ["robotics", "trajectory-optimization", "actuator-design", "inverse-design", "mujoco"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "pandas>=2.3.3,<3",
+    "cma>=4.4.0,<5",
+    "optuna>=4.8.0,<5",
+    "cmaes>=0.12.0,<1",
+    "lxml>=6.0.2,<7",
+    "mujoco>=3.3.7,<4",
+    "pydantic>=2.12.5",
+]
+
+[project.urls]
+Homepage = "https://mkakanov.github.io/actorob/"
+Documentation = "https://mkakanov.github.io/actorob/"
+Source = "https://github.com/SmbdOnceTldMe/actorob_dev"
+Issues = "https://github.com/SmbdOnceTldMe/actorob_dev/issues"
+Paper = "https://doi.org/10.1109/LRA.2026.3674006"
+
+[project.optional-dependencies]
+progress = [
+    "tqdm>=4.67.3,<5"
+]
+reporting = [
+    "plotly>=6.6.0,<7"
+]
+# Developer tools
+dev = [
+    "build>=1.3.0,<2",
+    "ruff>=0.5.0",
+    "pytest>=8.0.0",
+    "pre-commit>=3.5.0",
+    "twine>=6.2.0,<7"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 120
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore:Please update your 'hppfcl' imports to 'coal':DeprecationWarning:hppfcl",
+    "ignore:zmq\\.eventloop\\.ioloop is deprecated in pyzmq 17\\.:DeprecationWarning:meshcat\\.servers\\.zmqserver",
+]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[tool.pixi.pypi-dependencies]
+actorob = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+
+[tool.pixi.tasks]
+lint = "ruff check ."
+pre-commit-all = "pre-commit run --all-files"
+install-git-hooks = "pre-commit install --install-hooks --hook-type pre-commit"
+build-dist = "python -m build --sdist --wheel"
+check-dist = "python -m twine check dist/*"
+verify-wheel-install = "bash scripts/verify_wheel_install.sh"
+smoke-invdes = "python examples/cma_es_invdes.py --config configs/dog_aligator_minimal.toml --tasks walk --max-iterations 1 --population 1 --workers 1 --skip-dashboard --no-progress --run-output /tmp/actorob_smoke.pkl"
+verify-release = "bash scripts/verify_release.sh"
+model-example = "mjpython examples/model_example.py"
+dummy-pendulum = "mjpython examples/dummy_pendulum.py"
+dog-aligator-three-tasks = "python examples/aligator_dog_three_tasks.py"
+build-trajectory-dashboard = "python examples/build_trajectory_dashboard.py"
+test = "pytest -q"
+invdes-help = "python examples/cma_es_invdes.py --help"
+
+[tool.pixi.dependencies]
+python = ">=3.11,<3.14"
+optuna = ">=4.8.0,<5"
+cmaes = ">=0.12.0,<1"
+aligator = ">=0.18.0,<0.19"
+plotly = ">=6.6.0,<7"
+meshcat-python = ">=0.3.2,<0.4"
+pytest = "*"
+numpy = "*"
+tqdm = ">=4.67.3,<5"
+pydantic = ">=2,<3"

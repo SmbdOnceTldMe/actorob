@@ -1,0 +1,230 @@
+<mujoco model="humanoid_ryp_merged">
+  <compiler angle="radian" meshdir="meshes/"/>
+
+  <asset>
+    <mesh name="pelvis_link" file="pelvis_link.stl"/>
+    <mesh name="left_hip_pitch_link" file="left_hip_pitch_link.stl"/>
+    <mesh name="left_hip_roll_link" file="left_hip_roll_link.stl"/>
+    <mesh name="left_hip_yaw_link" file="left_hip_yaw_link.stl"/>
+    <mesh name="left_knee_pitch_link" file="left_knee_pitch_link.stl"/>
+    <mesh name="left_ankle_pitch_link" file="left_ankle_pitch_link.stl"/>
+    <mesh name="left_ankle_roll_link" file="left_ankle_roll_link.stl"/>
+    <mesh name="right_hip_pitch_link" file="right_hip_pitch_link.stl"/>
+    <mesh name="right_hip_roll_link" file="right_hip_roll_link.stl"/>
+    <mesh name="right_hip_yaw_link" file="right_hip_yaw_link.stl"/>
+    <mesh name="right_knee_pitch_link" file="right_knee_pitch_link.stl"/>
+    <mesh name="right_ankle_pitch_link" file="right_ankle_pitch_link.stl"/>
+    <mesh name="right_ankle_roll_link" file="right_ankle_roll_link.stl"/>
+    <mesh name="torso_link" file="torso_link.stl"/>
+    <mesh name="left_shoulder_pitch_link" file="left_shoulder_pitch_link.stl"/>
+    <mesh name="left_shoulder_roll_link" file="left_shoulder_roll_link.stl"/>
+    <mesh name="left_shoulder_yaw_link" file="left_shoulder_yaw_link.stl"/>
+    <mesh name="left_elbow_pitch_link" file="left_elbow_pitch_link.stl"/>
+    <mesh name="left_elbow_yaw_link" file="left_elbow_yaw_link.stl"/>
+    <mesh name="right_shoulder_pitch_link" file="right_shoulder_pitch_link.stl"/>
+    <mesh name="right_shoulder_roll_link" file="right_shoulder_roll_link.stl"/>
+    <mesh name="right_shoulder_yaw_link" file="right_shoulder_yaw_link.stl"/>
+    <mesh name="right_elbow_pitch_link" file="right_elbow_pitch_link.stl"/>
+    <mesh name="right_elbow_yaw_link" file="right_elbow_yaw_link.stl"/>
+  </asset>
+
+  <worldbody>
+    <body name="root">
+      <inertial pos="0.000208719 -6.88131e-05 -0.053816" quat="0.707231 0.706977 -0.0020216 0.00199889" mass="8.47532" diaginertia="0.124667 0.111724 0.0247263"/>
+      <joint name="floating_base_joint" type="free" limited="false" actuatorfrclimited="false"/>
+      <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="pelvis_link"/>
+      <geom size="0.062 0.0425" pos="0.0005 0.139997 -0.077" quat="0.70711 0 0.707103 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+      <geom size="0.062 0.0425" pos="0.0005 -0.140003 -0.077" quat="0.70711 0 0.707103 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+      <geom size="0.06 0.03205" pos="5.16504e-07 -5.04132e-08 0.0250091" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+      <site name="imu_mount" pos="0 0 0"/>
+      <site name="torso_mount" pos="0 0 0.0475"/>
+      <site name="imu_site" pos="0 0 0"/>
+      <body name="left_hip_roll_link" pos="0.043 0.14 -0.077">
+        <inertial pos="-0.0424996 8.50001e-08 -0.0817088" quat="9.67166e-07 0.70711 9.67175e-07 0.707104" mass="1.95758" diaginertia="0.00390852 0.00350271 0.00300279"/>
+        <joint name="left_hip_roll_joint" pos="0 0 0" axis="1 0 0" range="-0.5 1.047" armature="0.32256" damping="0.766" frictionloss="2.492"/>
+        <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_hip_roll_link"/>
+        <geom size="0.06 0.03205" pos="-0.0424995 1.07586e-07 -0.0930091" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+        <body name="left_hip_yaw_link" pos="-0.0425 7.10469e-08 -0.1155">
+          <inertial pos="-8.15282e-05 -0.0056514 -0.107013" quat="0.706833 -0.0175567 0.018256 0.706927" mass="3.95732" diaginertia="0.0184829 0.0140436 0.0093499"/>
+          <joint name="left_hip_yaw_joint" pos="0 0 0" axis="0 0 1" range="-2.722 2.722" armature="0.061488" damping="0.0069" frictionloss="0.576"/>
+          <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_hip_yaw_link"/>
+          <geom size="0.085 0.0415" pos="-0.000100823 -0.008554 -0.121217" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+          <body name="left_hip_pitch_link" pos="0 0.0220001 -0.121">
+            <inertial pos="-0.000160241 -0.0134881 -0.180496" quat="0.706764 -0.0149555 0.0149512 0.707133" mass="4.76011" diaginertia="0.0325838 0.0264769 0.0112813"/>
+            <joint name="left_hip_pitch_joint" pos="0 0 0" axis="0 1 0" range="-3.1415 3.1415" armature="0.155952" damping="0.338" frictionloss="1.481"/>
+            <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_hip_pitch_link"/>
+            <geom size="0.085 0.0415" pos="-0.000238364 -0.0176458 -0.179979" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+            <body name="left_knee_pitch_link" pos="0 -0.0091998 -0.33">
+              <inertial pos="0.00791673 1.09261e-07 -0.172865" quat="0.70701 -0.00277597 -0.00195185 0.707195" mass="3.05882" diaginertia="0.0384643 0.0371959 0.0031252"/>
+              <joint name="left_knee_pitch_joint" pos="0 0 0" axis="0 1 0" range="0 2.007" armature="0.155952" damping="0.338" frictionloss="1.481"/>
+              <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_knee_pitch_link"/>
+              <geom size="0.0525 0.027" pos="-0.00015591 0.0004461 -0.100101" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+              <geom size="0.0525 0.027" pos="-0.000319571 -0.0004459 -0.209961" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+              <body name="left_ankle_pitch_link" pos="-0.000857798 2.61427e-07 -0.424999">
+                <inertial pos="1.5474e-09 -1.5474e-09 8.61155e-09" quat="0.500032 0.500032 -0.499968 0.499968" mass="0.0915496" diaginertia="2.67722e-05 1.42226e-05 1.42226e-05"/>
+                <joint name="left_ankle_pitch_joint" pos="0 0 0" axis="0 1 0" range="-1.221 0.872" armature="0.043416" damping="0.028" frictionloss="0.876"/>
+                <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_ankle_pitch_link"/>
+                <body name="left_ankle_roll_link">
+                  <inertial pos="0.0388421 1.81631e-08 -0.0295267" quat="0 0.715124 0 0.698997" mass="1.02847" diaginertia="0.00308315 0.00269298 0.000478241"/>
+                  <joint name="left_ankle_roll_joint" pos="0 0 0" axis="1 0 0" range="-0.436 0.436" armature="0.043416" damping="0.028" frictionloss="0.876"/>
+                  <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_ankle_roll_link"/>
+                  <geom name="left_foot_collision" size="0.12 0.04 0.006" pos="0.04135 0 -0.032" type="box" group="1" rgba="0 0 0.7 0.1"/>
+                  <body name="left_foot" pos="0.04135 0 -0.037">
+                    <inertial pos="0 0 0" mass="1e-06" diaginertia="1e-09 1e-09 1e-09"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="right_hip_roll_link" pos="0.043 -0.14 -0.077">
+        <inertial pos="-0.0424996 3.47404e-08 -0.0817088" quat="6.69514e-07 0.70711 6.6952e-07 0.707104" mass="1.95758" diaginertia="0.00390852 0.00350271 0.00300279"/>
+        <joint name="right_hip_roll_joint" pos="0 0 0" axis="1 0 0" range="-1.047 0.5" armature="0.32256" damping="0.766" frictionloss="2.492"/>
+        <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_hip_roll_link"/>
+        <geom size="0.06 0.03205" pos="-0.0424995 5.03756e-08 -0.0930091" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+        <body name="right_hip_yaw_link" pos="-0.0425 0 -0.1155">
+          <inertial pos="-8.15502e-05 0.00565149 -0.106662" quat="0.706929 0.0181786 -0.0174774 0.706835" mass="3.95732" diaginertia="0.0184432 0.0140043 0.00935021"/>
+          <joint name="right_hip_yaw_joint" pos="0 0 0" axis="0 0 1" range="-2.722 2.722" armature="0.061488" damping="0.0069" frictionloss="0.576"/>
+          <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_hip_yaw_link"/>
+          <geom size="0.085 0.0415" pos="-0.00010085 0.0085541 -0.120783" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+          <body name="right_hip_pitch_link" pos="0 -0.022 -0.121">
+            <inertial pos="-9.24443e-05 0.0134882 -0.180379" quat="0.707056 0.0149129 -0.0149165 0.706843" mass="4.76011" diaginertia="0.0325842 0.0264775 0.0112815"/>
+            <joint name="right_hip_pitch_joint" pos="0 0 0" axis="0 1 0" range="-3.1415 3.1415" armature="0.155952" damping="0.338" frictionloss="1.481"/>
+            <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_hip_pitch_link"/>
+            <geom size="0.085 0.0415" pos="-0.000137514 0.0176459 -0.179804" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+            <body name="right_knee_pitch_link" pos="0 0.0092 -0.33">
+              <inertial pos="0.00818566 3.81344e-10 -0.172815" quat="0.707204 -0.00265843 -0.00348431 0.706996" mass="3.05882" diaginertia="0.0384988 0.0372265 0.00312924"/>
+              <joint name="right_knee_pitch_joint" pos="0 0 0" axis="0 1 0" range="0 2.007" armature="0.155952" damping="0.338" frictionloss="1.481"/>
+              <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_knee_pitch_link"/>
+              <geom size="0.0525 0.027" pos="-3.92528e-05 -0.000446 -0.0998958" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+              <geom size="0.0525 0.027" pos="-0.000101531 0.000446 -0.210046" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+              <body name="right_ankle_pitch_link" pos="0 0 -0.425">
+                <inertial pos="1.5474e-09 -1.5474e-09 0" quat="0.5 0.5 -0.5 0.5" mass="0.0915496" diaginertia="2.67722e-05 1.42226e-05 1.42226e-05"/>
+                <joint name="right_ankle_pitch_joint" pos="0 0 0" axis="0 1 0" range="-1.221 0.872" armature="0.043416" damping="0.028" frictionloss="0.876"/>
+                <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_ankle_pitch_link"/>
+                <body name="right_ankle_roll_link">
+                  <inertial pos="0.0388459 0 -0.0295218" quat="0 0.71508 0 0.699043" mass="1.02847" diaginertia="0.00308315 0.00269298 0.000478241"/>
+                  <joint name="right_ankle_roll_joint" pos="0 0 0" axis="1 0 0" range="-0.436 0.436" armature="0.043416" damping="0.028" frictionloss="0.876"/>
+                  <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_ankle_roll_link"/>
+                  <geom name="right_foot_collision" size="0.12 0.04 0.006" pos="0.04135 0 -0.032" type="box" group="1" rgba="0 0 0.7 0.1"/>
+                  <body name="right_foot" pos="0.04135 0 -0.037">
+                    <inertial pos="0 0 0" mass="1e-06" diaginertia="1e-09 1e-09 1e-09"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="torso_yaw_link" pos="0 0 0.0475">
+        <inertial pos="0 0 0.227807" quat="1 0 0 -0.000206205" mass="15.3022" diaginertia="0.348334 0.281258 0.137515"/>
+        <joint name="torso_yaw_joint" pos="0 0 0" axis="0 0 1" range="-1.5707 1.5707" armature="0.061488" damping="0.0069" frictionloss="0.576"/>
+        <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="torso_link"/>
+        <geom size="0.0525 0.027" pos="0.000111292 0.147954 0.354996" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+        <geom size="0.0525 0.027" pos="-0.000111292 -0.147954 0.354996" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+        <site name="left_arm_mount" pos="0 0.176 0.355"/>
+        <site name="right_arm_mount" pos="0 -0.176 0.355"/>
+        <body name="torso" pos="0 0 0.355">
+          <inertial pos="0 0 0" mass="1e-06" diaginertia="1e-09 1e-09 1e-09"/>
+        </body>
+        <body name="left_shoulder_pitch_link" pos="0 0.176 0.355">
+          <inertial pos="-0.00306315 0.0620754 0.00444058" quat="0.727835 0.685332 0.0237004 0.00389183" mass="1.0821" diaginertia="0.00182356 0.00132748 0.00115062"/>
+          <joint name="left_shoulder_pitch_joint" pos="0 0 0" axis="0 1 0" range="-2.618 2.007" armature="0.043416" damping="0.028" frictionloss="0.876"/>
+          <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_shoulder_pitch_link"/>
+          <geom size="0.0525 0.027" pos="-0.003946 0.0698986 -4.59265e-05" quat="0.70711 0 0.707103 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+          <body name="left_shoulder_roll_link" pos="0.024 0.07 0">
+            <inertial pos="-0.0192802 7.42705e-09 -0.0545648" quat="0.96696 -2.1985e-07 0.254927 -8.33909e-07" mass="0.28974" diaginertia="0.000310056 0.000288331 0.000120903"/>
+            <joint name="left_shoulder_roll_joint" pos="0 0 0" axis="1 0 0" range="-0.175 2.531" armature="0.043416" damping="0.028" frictionloss="0.876"/>
+            <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_shoulder_roll_link"/>
+            <body name="left_shoulder_yaw_link" pos="-0.027 0 -0.1405">
+              <inertial pos="8.58845e-07 -0.00134537 -0.0559306" quat="0.999944 -0.0105981 2.27804e-05 -7.5063e-06" mass="1.1219" diaginertia="0.00562987 0.00560549 0.000486935"/>
+              <joint name="left_shoulder_yaw_joint" pos="0 0 0" axis="0 0 1" range="-2.88 2.88" armature="0.0178848" damping="0.014" frictionloss="0.23"/>
+              <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_shoulder_yaw_link"/>
+              <geom size="0.028 0.03025" pos="5.24476e-06 -5.62893e-06 0.026002" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+              <geom size="0.028 0.03025" pos="-2.68858e-06 -0.003998 -0.128007" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+              <body name="left_elbow_pitch_link" pos="0 -0.03 -0.128">
+                <inertial pos="-1.67859e-06 0.0265135 -0.0778141" quat="0.995929 0.09014 2.39106e-05 -5.21924e-05" mass="0.603963" diaginertia="0.000815049 0.000801572 0.000237622"/>
+                <joint name="left_elbow_pitch_joint" pos="0 0 0" axis="0 1 0" range="-2.182 0" armature="0.0178848" damping="0.014" frictionloss="0.23"/>
+                <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_elbow_pitch_link"/>
+                <geom size="0.028 0.03025" pos="-2.68858e-06 0.0290072 -0.099498" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+                <body name="left_elbow_yaw_link" pos="0 0.029 -0.1255">
+                  <inertial pos="0 0 -0.0779665" mass="0.306173" diaginertia="0.000668211 0.000668211 9.56405e-05"/>
+                  <joint name="left_elbow_yaw_joint" pos="0 0 0" axis="0 0 1" range="-2.356 2.356" armature="0.0178848" damping="0.014" frictionloss="0.23"/>
+                  <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="left_elbow_yaw_link"/>
+                  <body name="left_end_effector" pos="0 0 -0.155">
+                    <inertial pos="0 0 0" mass="1e-06" diaginertia="1e-09 1e-09 1e-09"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="right_shoulder_pitch_link" pos="0 -0.176 0.355">
+          <inertial pos="-0.00306315 -0.0622329 0.00444058" quat="0.684116 0.728978 -0.00396618 -0.0236854" mass="1.0821" diaginertia="0.00182624 0.00133024 0.00115053"/>
+          <joint name="right_shoulder_pitch_joint" pos="0 0 0" axis="0 1 0" range="-2.618 2.007" armature="0.043416" damping="0.028" frictionloss="0.876"/>
+          <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_shoulder_pitch_link"/>
+          <geom size="0.0525 0.027" pos="-0.003946 -0.0701014 -4.59265e-05" quat="0.70711 0 0.707103 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+          <body name="right_shoulder_roll_link" pos="0.024 -0.07 0">
+            <inertial pos="-0.0192802 7.42705e-09 -0.0545648" quat="0.96696 -2.1985e-07 0.254927 -8.33909e-07" mass="0.28974" diaginertia="0.000310056 0.000288331 0.000120903"/>
+            <joint name="right_shoulder_roll_joint" pos="0 0 0" axis="1 0 0" range="-2.531 0.175" armature="0.043416" damping="0.028" frictionloss="0.876"/>
+            <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_shoulder_roll_link"/>
+            <body name="right_shoulder_yaw_link" pos="-0.027 0 -0.1405">
+              <inertial pos="-8.59101e-07 0.00134537 -0.0559306" quat="0.999944 0.0105981 -2.278e-05 -7.5155e-06" mass="1.1219" diaginertia="0.00562987 0.00560549 0.000486935"/>
+              <joint name="right_shoulder_yaw_joint" pos="0 0 0" axis="0 0 1" range="-2.88 2.88" armature="0.0178848" damping="0.014" frictionloss="0.23"/>
+              <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_shoulder_yaw_link"/>
+              <geom size="0.028 0.03025" pos="-5.24476e-06 5.62893e-06 0.026002" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+              <geom size="0.028 0.03025" pos="2.68858e-06 0.003998 -0.128007" quat="0.70711 0.707103 0 0" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+              <body name="right_elbow_pitch_link" pos="0 0.03 -0.128">
+                <inertial pos="-1.67789e-06 -0.0265045 -0.0778141" quat="0.995938 -0.0900385 2.39201e-05 5.22023e-05" mass="0.603963" diaginertia="0.000815022 0.00080153 0.000237637"/>
+                <joint name="right_elbow_pitch_joint" pos="0 0 0" axis="0 1 0" range="-2.182 0" armature="0.0178848" damping="0.014" frictionloss="0.23"/>
+                <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_elbow_pitch_link"/>
+                <geom size="0.028 0.03025" pos="-2.68858e-06 -0.0289928 -0.099498" type="cylinder" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1"/>
+                <body name="right_elbow_yaw_link" pos="0 -0.029 -0.1255">
+                  <inertial pos="0 0 -0.0779665" mass="0.306173" diaginertia="0.000668211 0.000668211 9.56405e-05"/>
+                  <joint name="right_elbow_yaw_joint" pos="0 0 0" axis="0 0 1" range="-2.356 2.356" armature="0.0178848" damping="0.014" frictionloss="0.23"/>
+                  <geom type="mesh" contype="0" conaffinity="0" rgba="0.8 0.8 0.9 1" mesh="right_elbow_yaw_link"/>
+                  <body name="right_end_effector" pos="0 0 -0.155">
+                    <inertial pos="0 0 0" mass="1e-06" diaginertia="1e-09 1e-09 1e-09"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <general name="left_hip_pitch_act" joint="left_hip_pitch_joint" ctrllimited="true" ctrlrange="-380 380"/>
+    <general name="left_hip_roll_act" joint="left_hip_roll_joint" ctrllimited="true" ctrlrange="-360 360"/>
+    <general name="left_hip_yaw_act" joint="left_hip_yaw_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="left_knee_pitch_act" joint="left_knee_pitch_joint" ctrllimited="true" ctrlrange="-380 380"/>
+    <general name="left_ankle_pitch_act" joint="left_ankle_pitch_joint" ctrllimited="true" ctrlrange="-90 90"/>
+    <general name="left_ankle_roll_act" joint="left_ankle_roll_joint" ctrllimited="true" ctrlrange="-90 90"/>
+    <general name="right_hip_pitch_act" joint="right_hip_pitch_joint" ctrllimited="true" ctrlrange="-380 380"/>
+    <general name="right_hip_roll_act" joint="right_hip_roll_joint" ctrllimited="true" ctrlrange="-360 360"/>
+    <general name="right_hip_yaw_act" joint="right_hip_yaw_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="right_knee_pitch_act" joint="right_knee_pitch_joint" ctrllimited="true" ctrlrange="-380 380"/>
+    <general name="right_ankle_pitch_act" joint="right_ankle_pitch_joint" ctrllimited="true" ctrlrange="-90 90"/>
+    <general name="right_ankle_roll_act" joint="right_ankle_roll_joint" ctrllimited="true" ctrlrange="-90 90"/>
+    <general name="torso_yaw_act" joint="torso_yaw_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="left_shoulder_pitch_act" joint="left_shoulder_pitch_joint" ctrllimited="true" ctrlrange="-90 90"/>
+    <general name="left_shoulder_roll_act" joint="left_shoulder_roll_joint" ctrllimited="true" ctrlrange="-90 90"/>
+    <general name="left_shoulder_yaw_act" joint="left_shoulder_yaw_joint" ctrllimited="true" ctrlrange="-36 36"/>
+    <general name="left_elbow_pitch_act" joint="left_elbow_pitch_joint" ctrllimited="true" ctrlrange="-36 36"/>
+    <general name="left_elbow_yaw_act" joint="left_elbow_yaw_joint" ctrllimited="true" ctrlrange="-36 36"/>
+    <general name="right_shoulder_pitch_act" joint="right_shoulder_pitch_joint" ctrllimited="true" ctrlrange="-90 90"/>
+    <general name="right_shoulder_roll_act" joint="right_shoulder_roll_joint" ctrllimited="true" ctrlrange="-90 90"/>
+    <general name="right_shoulder_yaw_act" joint="right_shoulder_yaw_joint" ctrllimited="true" ctrlrange="-36 36"/>
+    <general name="right_elbow_pitch_act" joint="right_elbow_pitch_joint" ctrllimited="true" ctrlrange="-36 36"/>
+    <general name="right_elbow_yaw_act" joint="right_elbow_yaw_joint" ctrllimited="true" ctrlrange="-36 36"/>
+  </actuator>
+
+  <sensor>
+    <accelerometer site="imu_site" name="accel" noise="0.9"/>
+    <gyro site="imu_site" name="gyro" noise="0.026"/>
+    <framequat objtype="site" objname="imu_site" name="frame_quat" noise="0.1072"/>
+  </sensor>
+</mujoco>

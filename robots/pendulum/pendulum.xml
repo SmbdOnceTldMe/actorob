@@ -1,0 +1,18 @@
+<mujoco model="pendulum_with_actuator">
+    <compiler angle="radian" />
+    <option integrator="RK4" timestep="0.01" />
+    <worldbody>
+        <body name="pendulum" pos="0 0 0">
+            <inertial pos="0 0 0.25" mass="1.0" diaginertia="0.02 0.02 0.01" />
+            <joint name="pendulum_joint" axis="0 1 0" damping="0.01" frictionloss="0.01" armature="0.001" limited="false" />
+            <geom type="capsule" fromto="0 0 0 0 0 0.5" size="0.03" />
+        </body>
+        <body name="pendulum_actuator" pos="0 0 0" euler="1.57 0 0">
+            <inertial pos="0 0 0" mass="1.5" diaginertia="0.005 0.005 0.01" />
+            <geom name="pendulum_actuator_geom" type="cylinder" size="0.05 0.05" />
+        </body>
+    </worldbody>
+    <actuator>
+        <general name="pendulum_act" joint="pendulum_joint" ctrllimited="true" ctrlrange="-20 20" />
+    </actuator>
+</mujoco>
